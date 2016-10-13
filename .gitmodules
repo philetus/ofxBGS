@@ -1,0 +1,3 @@
+[submodule "libs/bgslibrary"]
+	path = libs/bgslibrary
+	url = git@github.com:philetus/bgslibrary.git

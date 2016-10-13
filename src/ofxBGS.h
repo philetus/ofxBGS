@@ -13,7 +13,7 @@ public:
 	enum Processor{
 		AdaptiveBgLearning,
 		FrameDifference,
-		MixtureOfGaussianV1,
+		//MixtureOfGaussianV1,
 		MixtureOfGaussianV2,
 		StaticFrameDifference,
 		WeightedMovingMeans,
@@ -32,7 +32,7 @@ public:
 		TBFuzzySugenoIntegral,
 		TBFuzzyChoquetIntegral,
 		///
-		MultiLayer,
+		//MultiLayer,
 		///
 		SimpleGaussian,
 		FuzzyGaussian,
@@ -72,6 +72,7 @@ private:
 	cv::Mat foregroundBW;
 	cv::Mat foregroundMask;
 	cv::Mat frameMasked;
+	cv::Mat bkgmodel;
 	ofImage foregroundImg;
 
 	ofDirectory configDir;

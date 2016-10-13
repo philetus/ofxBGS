@@ -4,7 +4,7 @@
 #include "package_bgs/StaticFrameDifferenceBGS.h"
 #include "package_bgs/WeightedMovingMeanBGS.h"
 #include "package_bgs/WeightedMovingVarianceBGS.h"
-#include "package_bgs/MixtureOfGaussianV1BGS.h"
+//#include "package_bgs/MixtureOfGaussianV1BGS.h"
 #include "package_bgs/MixtureOfGaussianV2BGS.h"
 #include "package_bgs/AdaptiveBackgroundLearning.h"
 
@@ -21,7 +21,7 @@
 #include "package_bgs/tb/FuzzySugenoIntegral.h"
 #include "package_bgs/tb/FuzzyChoquetIntegral.h"
 
-#include "package_bgs/jmo/MultiLayerBGS.h"
+//#include "package_bgs/jmo/MultiLayerBGS.h"
 
 #include "package_bgs/lb/LBSimpleGaussian.h"
 #include "package_bgs/lb/LBFuzzyGaussian.h"
@@ -62,7 +62,7 @@ void ofxBGS::update(cv::Mat mat) {
 
 	cv::GaussianBlur(frame, frame, cv::Size(7,7), 1.5);
 
-	curProcessor->process(frame, foreground);
+	curProcessor->process(frame, foreground, bkgmodel);
 	if(foreground.channels()==1) {
 		foregroundBW = foreground;
 	} else {
@@ -135,9 +135,11 @@ void ofxBGS::setProcessor(Processor processor) {
 	case(FrameDifference):
 		setProcessor(processor, new FrameDifferenceBGS());
 		break;
+/*
 	case(MixtureOfGaussianV1):
 		setProcessor(processor, new MixtureOfGaussianV1BGS());
 		break;
+*/
 	case(MixtureOfGaussianV2):
 		setProcessor(processor, new MixtureOfGaussianV2BGS());
 		break;
@@ -185,11 +187,11 @@ void ofxBGS::setProcessor(Processor processor) {
 	case(TBFuzzyChoquetIntegral):
 		setProcessor(processor, new FuzzyChoquetIntegral());
 		break;
-		///
+		/* //
 	case(MultiLayer):
 		setProcessor(processor, new MultiLayerBGS());
 		break;
-		///
+		// */
 	case(SimpleGaussian):
 		setProcessor(processor, new LBSimpleGaussian());
 		break;
